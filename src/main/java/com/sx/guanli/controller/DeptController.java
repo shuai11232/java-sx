@@ -34,8 +34,8 @@ public class DeptController {
         return Result.success();
     }
 
-    @DeleteMapping("/{id}")
-    public Result<Void> delete(@PathVariable Integer id) {
+    @DeleteMapping()
+    public Result<Void> delete(@RequestParam Integer id) {
         deptService.delete(id);
         return Result.success();
     }

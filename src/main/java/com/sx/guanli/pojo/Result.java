@@ -7,7 +7,7 @@ package com.sx.guanli.pojo;
 
 public class Result<T> {
     private Integer code; //业务状态码  0-成功  1-失败
-    private String message; //提示信息
+    private String msg; //提示信息
     private T data; //响应数据
 
     // 无参构造函数
@@ -15,9 +15,9 @@ public class Result<T> {
     }
 
     // 全参构造函数
-    public Result(Integer code, String message, T data) {
+    public Result(Integer code, String msg, T data) {
         this.code = code;
-        this.message = message;
+        this.msg = msg;
         this.data = data;
     }
 
@@ -32,15 +32,24 @@ public class Result<T> {
     }
 
     // 快速返回操作失败响应结果
-    public static <E> Result<E> error(String message) {
-        return new Result<>(1, message, null);
+    public static <E> Result<E> error(String msg) {
+        return new Result<>(1, msg, null);
     }
 
     // Getter & Setter
     public Integer getCode() { return code; }
     public void setCode(Integer code) { this.code = code; }
-    public String getMessage() { return message; }
-    public void setMessage(String message) { this.message = message; }
+    public String getmsg() { return msg; }
+    public void setmsg(String msg) { this.msg = msg; }
     public T getData() { return data; }
     public void setData(T data) { this.data = data; }
+
+    @Override
+    public String toString() {
+        return "Result{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }
