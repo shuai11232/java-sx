@@ -31,4 +31,6 @@ public interface EmpMapper {
 
 
     List<Map<String, Object>> countEmpJobData();
+
+    List<Map> countEmpGenderData();
 }

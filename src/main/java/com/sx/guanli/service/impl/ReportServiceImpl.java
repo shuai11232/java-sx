@@ -25,6 +25,6 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public List<Map> getEmpGenderData() {
-        
+        return empMapper.countEmpGenderData();
     }
 }
