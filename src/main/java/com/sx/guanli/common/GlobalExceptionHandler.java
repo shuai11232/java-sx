@@ -3,7 +3,6 @@ package com.sx.guanli.common;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.BindException;
 import jakarta.validation.ConstraintViolationException;
 
@@ -16,10 +15,6 @@ public class GlobalExceptionHandler {
         return Result.error(e.getMessage());
     }
 
-    @ExceptionHandler(AccessDeniedException.class)
-    public Result<Void> handleAccessDeniedException(AccessDeniedException e) {
-        return Result.error("没有访问权限");
-    }
 
     @ExceptionHandler(BindException.class)
     public Result<Void> handleBindException(BindException e) {

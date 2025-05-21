@@ -20,7 +20,7 @@ public class StudentServiceImpl implements StudentService {
     private StudentMapper studentMapper;
 
     @Override
-    public PageBean<Student> page(String name, Integer clazzId, Integer page, Integer pageSize) {
+    public PageBean<Student> page(String name, Integer clazzId, String degree,Integer page, Integer pageSize) {
         PageHelper.startPage(page, pageSize);
 
         List<String> conditions = new ArrayList<>();
@@ -28,9 +28,11 @@ public class StudentServiceImpl implements StudentService {
             conditions.add("name LIKE '%" + name + "%'");
         }
         if (clazzId != null) {
-            conditions.add("clazz_id = " + clazzId);
+            conditions.add("(clazz_id = " + clazzId + " OR clazz_id IS NULL)");
         }
-
+        if(degree != null && !degree.isEmpty()){
+            conditions.add("(degree = '" + degree + "' OR degree IS NULL)");
+        }
         String whereClause = conditions.isEmpty() ? "1=1" : String.join(" AND ", conditions);
         Page<Student> p = (Page<Student>) studentMapper.list(whereClause);
         
@@ -58,8 +60,13 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    @Transactional
     public void handleViolation(Integer id, Integer score) {
-        studentMapper.updateScore(id, score);
+        LocalDateTime updateTime = LocalDateTime.now();
+        studentMapper.updateScore(id, score,updateTime);
+    }
+
+    @Override
+    public void deleteByIds(String ids) {
+        studentMapper.deleteByIds(ids);
     }
 }

@@ -1,18 +1,18 @@
 package com.sx.guanli.pojo;
 
 import lombok.Data;
-import java.time.LocalDateTime;
 
+import java.time.LocalDateTime;
 @Data
-public class Log {
+public class LogDto {
     private Integer id;
-    private Integer operatorId;
-    private String operatorName;
+    private Integer operateEmpId;
+    private String operateEmpName;
     private String operationType;
-    private LocalDateTime operationTime;
+    private LocalDateTime operateTime;
     private String requestUrl;
     private String requestMethod;
-    private String requestParams;
+    private String methodParams;
     private String className;
     private String methodName;
     private String returnValue;

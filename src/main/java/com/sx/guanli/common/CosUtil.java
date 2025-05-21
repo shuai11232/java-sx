@@ -10,6 +10,7 @@ import com.qcloud.cos.model.PutObjectResult;
 import com.qcloud.cos.model.StorageClass;
 import com.sx.guanli.pojo.CosClientFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 
 import java.io.IOException;
@@ -19,11 +20,11 @@ import java.io.InputStream;
  *   COS对象存储发送工具类
  */
 
-
+@Component
 public class CosUtil {
     private static String bucketName;
     @Value("${COS.bucketName}")
-    public void setSecretId(String bucketName) {
+    public void setBucketName(String bucketName) {
         CosUtil.bucketName = bucketName;
     }
     public static String upload(InputStream input,String filename) throws IOException {

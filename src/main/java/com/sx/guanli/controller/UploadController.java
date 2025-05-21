@@ -1,5 +1,6 @@
 package com.sx.guanli.controller;
 
+import com.sx.guanli.anno.LogAnnotation;
 import com.sx.guanli.pojo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/upload")
 public class UploadController {
+    @LogAnnotation(operationType = "上传", operationDesc = "上传文件")
     @PostMapping()
     public Result<String> upload(MultipartFile file)throws IOException {
         //保证文件名字唯一
