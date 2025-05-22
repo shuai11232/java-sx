@@ -7,7 +7,17 @@ import java.util.List;
 
 @Mapper
 public interface ClazzMapper {
-    @Select("SELECT * FROM clazz WHERE ${conditions}")
+    @Select("SELECT " +
+            "    c.*, " +
+            "    e.name AS masterName,"+
+            "    CASE " +
+            "        WHEN CURDATE() > c.end_date THEN '已结课' " +
+            "        WHEN CURDATE() < c.begin_date THEN '未开始' " +
+            "        ELSE '已开课' " +
+            "    END AS status " +
+            "FROM clazz c " +
+            "LEFT JOIN emp e ON e.id = c.master_id " +
+            "WHERE ${conditions}")
     List<Clazz> list(@Param("conditions") String conditions);
 
     @Select("SELECT * FROM clazz")
