@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sx.guanli.mapper.StudentMapper">
+    <select id="list" resultType="com.sx.guanli.pojo.Student">
+        SELECT s.*, c.name as clazzName 
+        FROM student s 
+        LEFT JOIN clazz c ON s.clazz_id = c.id 
+        WHERE ${conditions}
+    </select>
+</mapper>

@@ -25,7 +25,7 @@ public class StudentServiceImpl implements StudentService {
 
         List<String> conditions = new ArrayList<>();
         if (name != null && !name.isEmpty()) {
-            conditions.add("name LIKE '%" + name + "%'");
+            conditions.add("s.name LIKE '%" + name + "%'");
         }
         if (clazzId != null) {
             conditions.add("(clazz_id = " + clazzId + " OR clazz_id IS NULL)");

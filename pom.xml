@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.sx</groupId>
-    <artifactId>guanli</artifactId>
+    <artifactId>java-sx</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>guanli</name>
     <description>guanli</description>
